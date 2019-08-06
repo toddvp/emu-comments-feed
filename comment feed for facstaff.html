@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+ <html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['table']});
+      google.charts.setOnLoadCallback(drawTable);
+
+      function drawTable() {
+		  
+		  var queryString = encodeURIComponent('');
+
+      var query = new google.visualization.Query(
+          'https://docs.google.com/spreadsheets/d/1WEC1qndy4-PHGcqNSPF_oJ4S-gRri37ZbwxJh8CdSfM/gviz/tq?gid=630057489&headers=0&widget=false&chrome=false&tq=' + queryString);
+      query.send(handleQueryResponse);
+		  
+      }
+	  
+	   function handleQueryResponse(response) {
+		if (response.isError()) {
+        alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+        return;
+      }
+		var cssClassNames = {
+		'headerRow': 'feed-header-row',
+		'tableRow': 'feed-table-row-even',
+		'oddTableRow': 'feed-table-row-odd',
+		//'selectedTableRow': 'orange-background large-font',
+		//'hoverTableRow': '',
+		//'headerCell': 'gold-border',
+		'tableCell': 'feed-table-cell',
+		//'rowNumberCell': 'underline-blue-font'
+		};
+		
+		var data = response.getDataTable();
+		
+		//data.setColumnProperty(0, {style: 'color:red;font-size:2em;'});
+		
+		var table = new google.visualization.Table(document.getElementById('table_div'));
+		var formatter = new google.visualization.ColorFormat();
+		
+		
+		//formatter.addRange(null, null, '#9C999F');
+		//formatter.format(data, 0); // Apply formatter to second column
+		//data.setProperties(0,0,{style: 'width:125px; color:#9C999F;'});
+		
+		
+		table.draw(data, {showRowNumber: false, width: '100%', height: '100%',sort:'disable',allowHtml:'true',cssClassNames:cssClassNames,alternatingRowStyle:'true'});
+		
+			
+		
+    }
+	  
+    </script>
+	
+	<style>
+	@import url('https://fonts.googleapis.com/css?family=Varela+Round&display=swap');
+	
+	#header-container {height: 4em; width: 100%; margin:0px !important; padding:20px; text-align:center; display:block; position:fixed; z-index:10; background: #fff; top:0px;}
+	#comment-feed-header {font-family:'Varela Round',sans-serif; color:#102D52; font-size:1.7em !important;}
+	
+	#body-container {
+	height: auto; 
+	width:auto !important; 
+	position:relative; 
+	z-index:1;
+	margin-top:6em;
+	margin-bottom:5%;
+		margin-left: auto !important;
+		margin-right:auto !important;
+	}
+	
+
+	.table-container
+		{
+		border: 0;
+		height: 100%;
+		//left: 0;
+		position: relative;
+		top: 0;
+		//width: 100%;
+		//overflow:scroll;
+		margin-left: auto !important;
+		margin-right:auto !important;
+		
+		
+		
+		}
+	
+	.table-container table {
+		border-collapse:separate !important; 
+		border-spacing:20px !important;
+		max-width: 800px;
+		margin-left: auto !important;
+		margin-right:auto !important;
+		
+		}
+	.feed-header-row {display:none;}
+	.feed-table-row-odd, .feed-table-row-even {font-family: 'Varela Round',sans-serif;font-size:1.2em;}
+	.feed-table-cell {border:none !important; vertical-align:top; min-width:100px !important; }
+	.feed-table-row-odd td:nth-child(1), .feed-table-row-even td:nth-child(1),.feed-table-row-odd td:nth-child(2), .feed-table-row-even td:nth-child(2) 
+			{
+			color:#9C999F !important;
+			display:block !important;
+			
+			text-align:right;
+			width:150px;}
+	.feed-table-row-odd td:nth-child(1), .feed-table-row-even td:nth-child(1) {font-weight:bold;}
+	.feed-table-row-odd td:nth-child(3), .feed-table-row-even td:nth-child(3) {background:#efefef; margin-left:25px; padding:15px; border-radius: 25px; width: auto !important; vertical-align:middle; left:10px;   }
+	span.date2 { display:block;}
+	
+	
+	</style>
+	
+  </head>
+  <body>
+  
+  <div id="header-container">
+  <h1 id="comment-feed-header">EMU FacStaff Conference: <span id="comment-header">COMMENT FEED</span></h1>
+  </div>
+  
+  <div id="body-container">
+	<div class="table-container"    >
+    <div id="table_div" style="overflow:hidden;position:relative;"></div>
+	</div>
+	</div>
+	
+	
+  </body>
+</html>
