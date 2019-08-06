@@ -55,16 +55,29 @@
 	<style>
 	@import url('https://fonts.googleapis.com/css?family=Varela+Round&display=swap');
 	
-	#header-container {height: 4em; width: 100%; margin:0px !important; padding:20px; text-align:center; display:block; position:fixed; z-index:10; background: #fff; top:0px;}
-	#header-container a{font-family:'Varela Round',sans-serif;font-size:1em;font-weight:bold;color: #777;}
-	#comment-feed-header {font-family:'Varela Round',sans-serif; color:#102D52; font-size:1.7em !important;}
+	#header-container {height: 5em; width: 100%; margin:0px !important; padding:1em; text-align:center; display:block; position:fixed; z-index:10; background: #fff; top:0px;}
+	
+	#header-container a,#header-container a:visited{
+	font-family:'Varela Round',sans-serif;
+	font-size:1em;
+	font-weight:bold;
+	background-color: #777;
+	color: white;
+  padding: .75em 1em;
+  text-decoration: none;
+  margin:10px 0px !important;
+	}
+	#header-container a:hover{background: #5286bf;}
+	#header-container a:active{background: #0056B8;}
+	
+	#comment-feed-header {font-family:'Varela Round',sans-serif; color:#102D52; font-size:1.7em !important; }
 	
 	#body-container {
 	height: auto; 
 	width:auto !important; 
 	position:relative; 
 	z-index:1;
-	margin-top:6em;
+	margin-top:7em;
 	margin-bottom:5%;
 		margin-left: auto !important;
 		margin-right:auto !important;
@@ -116,7 +129,7 @@
   
   <div id="header-container">
   <h1 id="comment-feed-header">EMU FacStaff Conference: <span id="comment-header">COMMENT FEED</span></h1>
-	  <a href="https://forms.gle/9Mhq8nf5oo72VQL17">add a comment!</a>
+	  <a href="https://forms.gle/9Mhq8nf5oo72VQL17">add a comment</a>
   </div>
   
   <div id="body-container">
